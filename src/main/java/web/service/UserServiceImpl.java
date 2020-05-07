@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
@@ -43,12 +43,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Transactional
     @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+    public User getUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDao.getUserByUsername(username);
         if (user != null) {
             return user;
         } else {
-            throw new UsernameNotFoundException("User Not found");
+            return null;
         }
     }
 

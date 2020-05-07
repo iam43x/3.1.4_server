@@ -20,9 +20,15 @@ public class RestAdminControllers {
         return userService.getAllUsers();
     }
 
+    @PostMapping(value = "/user")
+    public User getUserByUsername(@RequestBody String username){
+        return userService.getUserByUsername(username);
+    }
+
     @GetMapping(value = "/users/{id}")
     public User getUser(@PathVariable("id")Long id){
-       return userService.getUserById(id);
+
+        return userService.getUserById(id);
     }
 
     @PostMapping(value = "/users")
